@@ -1,0 +1,9 @@
+{
+    "name": "fivem-vehicle-merger",
+    "version": "1.0.0",
+    "scripts": "index.js",
+    "targets": [
+      "latest"
+    ]
+}
+  
