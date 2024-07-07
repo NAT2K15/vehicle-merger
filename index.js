@@ -149,7 +149,7 @@ async function exportStream() {
                 if (mainroot === 'vehicles.meta') {
                   log(chalk.red.bold `Looking for the vehicle name in cars/${dir}/${mainroot}/vehicles.meta`);
 
-                  let data = fs.readFileSync(`cars/${dir}/${mainroot}`, 'utf8');
+                  let data = await fs.readFileSync(`cars/${dir}/${mainroot}`, 'utf8');
                   let modelName = data.match(/<modelName>(.*)<\/modelName>/)[1];
                   log(chalk.green.bold `Found the vehicle name: ${modelName}`);
 
@@ -160,6 +160,7 @@ async function exportStream() {
 
                 }
               } catch (error) {
+                console.log(error.stack)
                 log(chalk.red `Error copying file: ${error.message}`);
 
               }
@@ -174,7 +175,7 @@ async function exportStream() {
                   if (file.endsWith('vehicles.meta')) {
                     log(chalk.red.bold `Looking for the vehicle name...`);
 
-                    let data = fs.readFileSync(`cars/${dir}/${mainroot}`, 'utf8');
+                    let data = fs.readFileSync(`cars/${dir}/${mainroot}/${file}`, 'utf8');
                     let modelName = data.match(/<modelName>(.*)<\/modelName>/)[1];
                     log(chalk.green.bold `Found the vehicle name: ${modelName}`);
 
